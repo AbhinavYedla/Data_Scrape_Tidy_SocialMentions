@@ -1,22 +1,27 @@
-#####################################################################################################################
-#                                                       Social Mentions                                             #
-#####################################################################################################################
-#'
+##############################################################################
+#                                 Social Mentions                            #
+##############################################################################
+#' @title
+#' Social Mentions
+#' 
 #' @description 
-#' Get Strength, Sentiment, Passion and Reach of a term in Blogs, MicroBlogs, Bookmarks, Images or all of the sources.
+#' Get Strength, Sentiment, Passion and Reach of a term in Blogs, MicroBlogs, 
+#' Bookmarks, Images or all of the sources.
 #' 
 #' @param term - term which we intend to get the data
-#' @param source - list of sources of a term for which we intended to get the data 
+#' @param source - list of source of a term for which we intended to get the data 
 #' @param time.frame - get only the results based on the mentioned timeframe.
 #'
 #' @return 
-#' A data frame consisting of data related to the term belonging to a source with in the given time frame is returned.
+#' A data frame consisting of data related to the term belonging to a source 
+#' with in the given time frame is returned.
 #' 
 #' @details 
 #' \code{term} is any character string
-#' \code{source} can be Blogs, MicroBlogs, Bookmarks, Images, all or list of all of the mentioned sources.
-#' \code{time.frame} can be h, 12h, 24h, w, m or all. Meaning in respective order Last Hour, Last 12 Hours, Last Day, 
-#' Last Week, Last Month or Anytime.      
+#' \code{source} can be Blogs, MicroBlogs, Bookmarks, Images, all or list of all
+#'  of the mentioned sources.
+#' \code{time.frame} can be h, 12h, 24h, w, m or all. Meaning in respective order
+#' Last Hour, Last 12 Hours, Last Day, Last Week, Last Month or Anytime.      
 #'
 #' @examples
 #' socialMention("United_States")
@@ -34,27 +39,20 @@
 #' @keywords
 #' Social Mentions
 #'
+#' @import 
+#' rvest
+#'
 #' @export
 #'  
 #' @author
 #' Abhinav Yedla \email{abhinavyedla@gmail.com}
-#'
 
 socialMention <- function(term, source = "all", time.frame = "all") {
   
-  if (!require("rvest")) {
-    print("Trying to install rvest")
-    install.packages("rvest")
-    if (require(rvest)) {
-      print("rvest installed and loaded")
-    } else {
-      stop("Could not install rvest")
-    }
-  }
   
   #Checking parameters
   if (missing(term)){
-    stop("Term is not provided")
+    stop("Please enter the term and try again")
   }else {
     #Replace space with + 
     term <- gsub(" ","+",x = term,fixed = TRUE)
